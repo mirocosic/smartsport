@@ -15,5 +15,13 @@
     </head>
     <body>
        <?php echo $this->fetch('content'); ?> 
+        <div id="Footer">
+            
+            <?php echo $this->Html->link('English', array('language'=>'eng')); ?>
+            <?php echo $this->Html->link('Hrvatski', array('language'=>'hrv')); ?>
+            
+            
+           
+        </div>
     </body>
 </html>

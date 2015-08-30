@@ -29,6 +29,16 @@
  * ...and connect the rest of 'Pages' controller's URLs.
  */
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
+        
+        // language URL rewriting - SEO
+        Router::connect('/:language/:controller/:action/*',array(),array('language' => '[a-z]{3}'));
+      //  Router::connect('/:language/:controller/:action/*',array(),array('language' => 'eng|hrv'));
+      //  Router::connect('/:language/:controller',
+      //             array('action' => 'index'),
+      //             array('language' => 'eng|fre')); 
+
+
+
 
 /**
  * Load all plugin routes. See the CakePlugin documentation on

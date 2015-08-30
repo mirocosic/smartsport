@@ -2,6 +2,10 @@
     
     function index(){
        $this->layout = 'MainSmartSport';
-       Configure::write('Config.language', 'hrv');
+      
+    }
+    
+    public function test(){
+        $this->autoRender = false;
     }
 }
