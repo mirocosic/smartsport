@@ -7,7 +7,7 @@
                 width        : 200,
                 height       : 150,
                 bodyPadding  : 5,
-                title        : 'Hello World',
+                title        : '<?=__("Hello World");?>',
                 html         : 'This is Ext.Panel from ExtJS 6 - Triton theme'
             });
         }
