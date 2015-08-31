@@ -19,3 +19,20 @@ msgstr ""
 msgid "Hello World"
 msgstr "Pozdrav Svijete"
 
+msgid "Log In"
+msgstr "Prijava"
+
+msgid "Password"
+msgstr "Lozinka"
+
+msgid "Username"
+msgstr "Korisničko ime"
+
+msgid "Name"
+msgstr "Ime"
+
+msgid "Surname"
+msgstr "Prezime"
+
+msgid "Create"
+msgstr "Kreiraj"

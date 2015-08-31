@@ -34,6 +34,13 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
+    
+     <!-- load ExtJS -->
+        <script src="/js/ext/ext-all.js"></script>
+        
+        <!-- load Theme Triton -->
+        <script src="/ext-themes/theme-triton/theme-triton.js"></script>
+        <link rel="stylesheet" href="/ext-themes/theme-triton/resources/theme-triton-all.css"/>
 </head>
 <body>
 	<div id="container">
@@ -43,7 +50,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		<div id="content">
 
 			<?php echo $this->Flash->render(); ?>
-
+                        <?php echo $this->Html->link('Eng', array('language'=>'eng')); ?>
+                        <?php echo $this->Html->link('Hrv', array('language'=>'hrv')); ?>
+                        <?php echo $this->Html->link('Login', array('controller'=>'users','action'=>'login')); ?>
+                        <?php echo $this->Html->link('Logout', array('controller'=>'users','action'=>'logout')); ?>
+                        
 			<?php echo $this->fetch('content'); ?>
 		</div>
 		<div id="footer">
