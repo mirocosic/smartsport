@@ -49,8 +49,17 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-        ga('create', 'UA-67040802-1', 'auto');
-        ga('send', 'pageview');
+        <?php 
+          $uid = AuthComponent::user('id');
+          if ($uid){
+             //echo "ga('set', '&uid', 'UserID=$uid'); ";// Set the user ID using signed-in user_id.
+             echo "ga('create', 'UA-67040802-1', { 'userId': 'UserID=$uid' });";
+             echo "ga('send', 'pageview');";
+          } else {
+              echo "ga('create', 'UA-67040802-1', 'auto');";
+              echo "ga('send', 'pageview');";
+          }
+        ?>
 
     </script>
 	<div id="container">
