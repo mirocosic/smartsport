@@ -33,6 +33,7 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller {
    
     public $components = array(
+        'Acl',
         'Session',
         'Cookie',
         'Auth'=>array(
@@ -40,6 +41,9 @@ class AppController extends Controller {
                 'Form' => array(
                     'passwordHasher' => 'Blowfish'
                 )
+            ),
+            'authorize' => array(
+                'Actions' => array('actionPath' => 'controllers')
             )
         )
     );
