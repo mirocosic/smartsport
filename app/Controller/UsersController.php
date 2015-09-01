@@ -4,15 +4,26 @@
     
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow();
+        $this->Auth->allow('login','logout','view');
     }
     
     public function login() {
         if ($this->request->is('post')) {
+            $this->autoRender = false;
+            $this->layout = false;
+            
             if ($this->Auth->login()) {
-                return $this->redirect($this->Auth->redirect());
+               // return $this->redirect($this->Auth->redirectUrl());
+               $response['success'] = true;
+               $response['message'] = 'Login successful!';
+               $response['redirect'] = $this->Auth->redirectUrl();
+               return json_encode($response);
+            } else {
+                $response['success'] = false;
+                $response['message'] = 'Login failed!';
+                return json_encode($response);
             }
-            $this->Session->setFlash(__('Invalid username or password, try again'));
+           // $this->Session->setFlash(__('Invalid username or password, try again'));
         }
     }
     
@@ -60,10 +71,26 @@
         }
     }
     
-    function view(){
+    function index(){
         $users = $this->User->find('all');
         $this->set('users',$users);
         
+    }
+    
+    function view($id = null){
+        if ($id == null){
+            throw new NotFoundException;
+        }
+        
+        $user = $this->User->find('first',[
+            'conditions'=>['User.id'=>$id]
+        ]);
+        
+        if ($user){
+            $this->set('user',$user);
+        } else {
+            throw new NotFoundException;
+        }
     }
     
     function delete(){

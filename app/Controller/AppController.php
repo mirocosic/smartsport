@@ -44,18 +44,30 @@ class AppController extends Controller {
             ),
             'authorize' => array(
                 'Actions' => array('actionPath' => 'controllers')
-            )
+            ),
+            'loginAction' => array(
+                'controller' => 'users',
+                'action' => 'login'
+            ),
+            'loginRedirect' => '/',
         )
     );
     
    function beforeFilter() {
-        
+       
+       // remove after testing
+       $this->Auth->allow();
+       
+       $this->Auth->unauthorizedRedirect = false;
+        $this->Auth->authError = "Access Denied";
+       
         $this->_setLanguage();
         //upaliti ako ima problema sa Auth i localization - i saznati kak radi :D
         //$this->Auth->logoutRedirect = array( 'controller' => 'static', 'action' => 'index', 'language'=>$this->Session->read('Config.language'));
         //$this->Auth->loginRedirect = array( 'controller' => 'static', 'action' => 'dashboard', 'language'=>$this->Session->read('Config.language'));
         //this->Auth->loginAction = array( 'controller'=>'users', 'action'=>'login', 'language'=>$this->Session->read('Config.language'));
-
+        
+        
        
     }
     

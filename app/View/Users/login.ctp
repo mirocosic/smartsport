@@ -55,15 +55,20 @@ Ext.onReady(function() {
             method: 'POST',
             waitTitle: 'Connecting',
             waitMsg: 'Authenticating...',
-            success: function() {
+            success: function(form, action) {
+                console.log(action);
+                var obj = Ext.decode(action.response.responseText);
                 Ext.Msg.alert('Status', 'Login Successful!', function(btn, text) {
                     if (btn == 'ok') {
-                        var redirect = 'logincomplete';
-                        window.location = redirect;
+                        var redirectUrl = obj.redirect;
+                        console.log(redirectUrl);
+                        window.location = redirectUrl;
                     }
                 });
             },
             failure: function(form, action) {
+                Ext.Msg.alert('Status', 'Login Failed!');
+                /*
                 if (action.failureType == 'server') {
                     var obj = Ext.decode(action.response.responseText);
                     Ext.Msg.alert('Login Failed!', obj.errors.reason);
@@ -71,6 +76,8 @@ Ext.onReady(function() {
                     Ext.Msg.alert('Warning!', 'Authentication server is unreachable : ' + action.response.responseText);
                 }
                 loginPanel.getForm().reset();
+                
+                */
             }
         });
         
@@ -82,7 +89,7 @@ Ext.onReady(function() {
 </script>
 
 
-
+<? debug($_SESSION);?>
 
 
 
