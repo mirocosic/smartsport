@@ -7,5 +7,6 @@
     
     public function test(){
         $this->autoRender = false;
+       
     }
 }

@@ -20,6 +20,9 @@ msgid "Hello World"
 msgstr "Pozdrav Svijete"
 
 msgid "Log In"
+msgstr "Prijavi se"
+
+msgid "Login"
 msgstr "Prijava"
 
 msgid "Password"
@@ -36,3 +39,18 @@ msgstr "Prezime"
 
 msgid "Create"
 msgstr "Kreiraj"
+
+msgid "Save"
+msgstr "Spremi"
+
+msgid "Add user"
+msgstr "Kreiraj korisnika"
+
+msgid "Edit user"
+msgstr "Izmijeni korisnika"
+
+msgid "Add group"
+msgstr "Kreiraj grupu"
+
+msgid "The user could not be saved. Please, try again."
+msgstr "Došlo je do greške prilikom spremanja. Pokušajte ponovno."
