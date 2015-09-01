@@ -33,18 +33,35 @@
                 $this->Session->setFlash(__('The user has been saved'));
                 return $this->redirect(array('action' => 'view'));
             }
-            $this->Session->setFlash(
-                __('The user could not be saved. Please, try again.')
-            );
+            $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
         }
         
     }
     
+    function edit($id = null){
+        if ($id == null) {
+            $this->Session->setFlash(__('User ID not set.'));
+            return $this->redirect(array('action' => 'view'));
+        }
+        
+        $userData = $this->User->find('first',['conditions'=>['User.id'=>$id]]);
+        if (!$this->request->data) {
+            $this->request->data = $userData;
+        } else {
+            App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
+            $passwordHasher = new BlowfishPasswordHasher();
+            
+            $this->request->data['User']['password'] = $passwordHasher->hash($this->request->data['User']['password']);
+            if ($this->User->save($this->request->data)) {
+                $this->Session->setFlash(__('The user has been saved'));
+                return $this->redirect(array('action' => 'view'));
+            }
+            $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+        }
+    }
+    
     function view(){
-        
         $users = $this->User->find('all');
-        
-        $this->set('response',$this->result);
         $this->set('users',$users);
         
     }
@@ -53,7 +70,5 @@
         
     }
     
-    function edit(){
-        
-    }
+    
 }
