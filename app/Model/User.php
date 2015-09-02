@@ -2,6 +2,17 @@
 class User extends AppModel {
     public $belongsTo = array('Group');
     public $actsAs = array('Acl' => array('type' => 'requester'));
+    
+    public $hasAndBelongsToMany = array(
+        'Club'=>array(
+            'className' => 'Club',
+            'joinTable' => 'users_clubs',
+            'foreign_key' => 'user_id',
+            'associationForeignKey' => 'club_id',
+            'unique'=>true
+            
+        )
+    );
 
     public function parentNode() {
         if (!$this->id && empty($this->data)) {

@@ -56,9 +56,9 @@ class AppController extends Controller {
    function beforeFilter() {
        
        // remove after testing
-       $this->Auth->allow();
+        $this->Auth->allow();
        
-       $this->Auth->unauthorizedRedirect = false;
+        $this->Auth->unauthorizedRedirect = false;
         $this->Auth->authError = "Access Denied";
        
         $this->_setLanguage();

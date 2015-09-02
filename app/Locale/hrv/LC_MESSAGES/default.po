@@ -25,6 +25,9 @@ msgstr "Prijavi se"
 msgid "Login"
 msgstr "Prijava"
 
+msgid "Logout"
+msgstr "Odjava"
+
 msgid "Password"
 msgstr "Lozinka"
 
@@ -54,3 +57,9 @@ msgstr "Kreiraj grupu"
 
 msgid "The user could not be saved. Please, try again."
 msgstr "Došlo je do greške prilikom spremanja. Pokušajte ponovno."
+
+msgid "Club"
+msgstr "Klub"
+
+msgid "Users"
+msgstr "Korisnici"
