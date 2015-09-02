@@ -6,7 +6,7 @@
     }
     
     function index(){
-        $this->layout = 'default';
+        $this->layout = 'MainSmartSport';
        // $this->autoRender = false;
         
         //echo 'This is Homepage!';
