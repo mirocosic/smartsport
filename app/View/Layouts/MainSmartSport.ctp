@@ -11,6 +11,10 @@
         <!-- load Theme Triton -->
         <script src="/ext-themes/theme-triton/theme-triton.js"></script>
         <link rel="stylesheet" href="/ext-themes/theme-triton/resources/theme-triton-all.css"/>
+        
+        <!-- load fonts -->
+        <link rel="stylesheet" href="/css/fonts.css"/>
+        
         <style>
             html,body {
                 height:100%;
@@ -47,6 +51,7 @@
 Ext.onReady(function() {
     var mainPanel = new Ext.panel.Panel({
         title: 'Smart Sport',
+        glyph: 'xf1e3@FontAwesome',
         width: '100%',
         height: '100%',
         plugins: 'responsive',
@@ -87,6 +92,7 @@ Ext.onReady(function() {
             items:[{
                 xtype:'panel',
                 padding: '20',
+                glyph: 'xf0c0@FontAwesome',
                 html: '<?= $this->Html->link(__("Users"),['controller'=>'users','action'=>'index']);?>'
             },{
                 xtype:'panel',
