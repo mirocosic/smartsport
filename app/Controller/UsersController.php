@@ -8,6 +8,7 @@
     }
     
     public function login() {
+         $this->layout = "login";
         if ($this->request->is('post')) {
             $this->autoRender = false;
             $this->layout = false;

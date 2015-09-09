@@ -1,3 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Main page for SmartSport App</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!-- load ExtJS -->
+        <script src="/js/ext/ext-all.js"></script>
+        
+        <!-- load Theme Triton -->
+        <script src="/ext-themes/theme-triton/theme-triton.js"></script>
+        <link rel="stylesheet" href="/ext-themes/theme-triton/resources/theme-triton-all.css"/>
+        
+        <!-- load fonts -->
+        <link rel="stylesheet" href="/css/fonts.css"/>
+        
+        <style>
+            html,body {
+                height:100%;
+                position: relative;
+            }
+            
+            #content {
+                position: absolute;
+                margin: auto !important;
+                width: 320px;
+                height: 400px;
+                left:0;
+                right: 0;
+                top:0;
+                bottom:0;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            <?php 
+              $uid = AuthComponent::user('id');
+              if ($uid){
+                 //echo "ga('set', '&uid', 'UserID=$uid'); ";// Set the user ID using signed-in user_id.
+                 echo "ga('create', 'UA-67040802-1', { 'userId': 'UserID=$uid' });";
+                 echo "ga('send', 'pageview');";
+              } else {
+                  echo "ga('create', 'UA-67040802-1', 'auto');";
+                  echo "ga('send', 'pageview');";
+              }
+            ?>
+
+        </script>
+        <div id="content">
+            
+        </div>   
+      
+       
+    </body>
 <script type='text/javascript'>
     
 Ext.onReady(function() {
@@ -84,33 +146,8 @@ Ext.onReady(function() {
     }
     
     loginPanel.render(Ext.get('content'));
+    
 });
 
 </script>
-
-
-<? debug($_SESSION);?>
-
-
-
-
-
-<!--
-
-<?php echo $this->Form->create('User'); ?>
-    <fieldset>
-        <h3 class="form-signin-heading text-center"><?=__('Log In');?></h3>
-        <div class="form-group">
-            
-        <?php echo $this->Form->input('username', ['class'=>'form-control','placeholder'=>__('Username'),'label'=>__('Username')]);
-              echo $this->Form->input('password', ['class'=>'form-control','placeholder'=>__('Password'),'label'=>__('Password')]);
-       
-        ?>
-        </div>
-        <?= $this->Form->submit(__('Log In'));?>
-    </fieldset>
-   
-    <?php echo $this->Session->flash(); ?>
-    <?php echo $this->element('sql_dump'); ?>
-
--->
+</html>
