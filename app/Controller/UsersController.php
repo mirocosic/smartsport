@@ -72,8 +72,14 @@
     }
     
     function index(){
-        $users = $this->User->find('all');
-        $this->set('users',$users);
+        $this->layout = false;
+        $this->autoRender = false;
+        $users = $this->User->find('all',[
+            'fields'=>['User.id','User.username','User.name','User.surname','User.mail']
+        ]);
+        //$this->set('users',$users);
+        
+        return json_encode($users);
         
     }
     
