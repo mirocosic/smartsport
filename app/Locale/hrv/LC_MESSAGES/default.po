@@ -64,8 +64,38 @@ msgstr "Došlo je do greške prilikom spremanja. Pokušajte ponovno."
 msgid "Club"
 msgstr "Klub"
 
+msgid "Clubs"
+msgstr "Klubovi"
+
+msgid "Create new club"
+msgstr "Kreiraj novi klub"
+
 msgid "Users"
 msgstr "Korisnici"
 
 msgid "Permissions"
 msgstr "Dozvole"
+
+msgid "Saved"
+msgstr "Spremljeno"
+
+msgid "Deleted"
+msgstr "Obrisano"
+
+msgid "Error"
+msgstr "Greška"
+
+msgid "User successfully saved."
+msgstr "Korisnik uspješno spremljen."
+
+msgid "Error while saving. Please contact your Administrator."
+msgstr "Greška prilikom spremanja. Molim kontaktirajte administratora."
+
+msgid "Are you sure?"
+msgstr "Jeste li sigurni?"
+
+msgid "Delete club "
+msgstr "Obrisati klub "
+
+msgid "Delete user "
+msgstr "Obrisati korisnika "

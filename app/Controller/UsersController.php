@@ -51,25 +51,45 @@
     }
     
     function edit($id = null){
-        if ($id == null) {
-            $this->Session->setFlash(__('User ID not set.'));
-            return $this->redirect(array('action' => 'view'));
+        
+        $this->layout = false;
+        $this->autoRender = false;
+        
+        if (empty($this->request->data)){
+            $response['success'] = false;
+            $response['message'] = 'Empty data sent!';
+            return json_encode($response);
         }
         
-        $userData = $this->User->find('first',['conditions'=>['User.id'=>$id]]);
-        if (!$this->request->data) {
-            $this->request->data = $userData;
+        if (empty($this->request->data['User_id'])){
+            $this->User->create();
         } else {
-            App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
-            $passwordHasher = new BlowfishPasswordHasher();
-            
-            $this->request->data['User']['password'] = $passwordHasher->hash($this->request->data['User']['password']);
-            if ($this->User->save($this->request->data)) {
-                $this->Session->setFlash(__('The user has been saved'));
-                return $this->redirect(array('action' => 'view'));
-            }
-            $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+            $saveData['User']['id'] = $this->request->data['User_id'];
         }
+        
+        $saveData['User']['name'] = trim($this->request->data['User_name']);
+        $saveData['User']['surname'] = trim($this->request->data['User_surname']);
+        $saveData['User']['mail'] = trim($this->request->data['User_mail']);
+        $saveData['User']['username'] = trim($this->request->data['User_username']);
+        
+        
+        
+        if ($this->User->saveAll($saveData)){
+            $response['success'] = true;
+            $response['message'] = __('User successfully saved.');
+        } else {
+            $response['success'] = false;
+            $response['message'] = __('Error while saving. Please contact your Administrator.');
+
+        }
+     /*   
+        App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
+        $passwordHasher = new BlowfishPasswordHasher();
+            
+        $this->request->data['User']['password'] = $passwordHasher->hash($this->request->data['User']['password']);
+        
+      */
+        return json_encode($response);
     }
     
     function index(){
@@ -79,7 +99,7 @@
             'fields'=>['User.id','User.username','User.name','User.surname','User.mail']
         ]);
         //$this->set('users',$users);
-        
+       // $response['data'] = $users;
         return json_encode($users);
         
     }
@@ -101,8 +121,25 @@
     }
     
     function delete(){
+        $this->layout = false;
+        $this->autoRender = false;
+       
+        if (empty($this->request->data['user_id'])){
+            $response['success'] = false;
+            $response['message'] = 'Empty id sent!';
+            return json_encode($response);
+        }
         
+       // $this->User->id = $this->request->data['user_id'];
+        if ($this->User->delete($this->request->data['user_id'])){
+            $response['success'] = true;
+            $response['message'] = 'Yessss! Gone!';
+        } else {
+           $response['success'] = false;
+            $response['message'] = 'Error deleting user.'; 
+        }
+        
+        return json_encode($response);
     }
-    
     
 }
