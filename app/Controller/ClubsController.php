@@ -51,7 +51,7 @@
     
     function delete(){
         $response['success'] = true;
-        $response['message'] = 'Yessss! Gone!';
+        $response['message'] = 'Yessss! Gone! Actually, this is not working yet ;)';
         return json_encode($response);
     }
     
