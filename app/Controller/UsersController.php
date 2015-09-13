@@ -1,6 +1,6 @@
 <?php class UsersController extends AppController {
     
-    var $uses = ['User'];
+    var $uses = ['User','ClubMembership'];
     
     public function beforeFilter() {
         parent::beforeFilter();
@@ -95,11 +95,11 @@
     function index(){
         $this->layout = false;
         $this->autoRender = false;
+        
         $users = $this->User->find('all',[
             'fields'=>['User.id','User.username','User.name','User.surname','User.mail']
         ]);
-        //$this->set('users',$users);
-       // $response['data'] = $users;
+       
         return json_encode($users);
         
     }

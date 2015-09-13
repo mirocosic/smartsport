@@ -49,6 +49,9 @@ msgstr "Spremi"
 msgid "Edit"
 msgstr "Izmijeni"
 
+msgid "Add"
+msgstr "Dodaj"
+
 msgid "Add user"
 msgstr "Kreiraj korisnika"
 
@@ -63,6 +66,9 @@ msgstr "Došlo je do greške prilikom spremanja. Pokušajte ponovno."
 
 msgid "Club"
 msgstr "Klub"
+
+msgid "User"
+msgstr "Korisnik"
 
 msgid "Clubs"
 msgstr "Klubovi"
@@ -99,3 +105,30 @@ msgstr "Obrisati klub "
 
 msgid "Delete user "
 msgstr "Obrisati korisnika "
+
+msgid "Members"
+msgstr "Članovi"
+
+msgid "Remove"
+msgstr "Makni"
+
+msgid "Yes"
+msgstr "Da"
+
+msgid "No"
+msgstr "Ne"
+
+msgid "Please select a user"
+msgstr "Molimo odaberite korisnika"
+
+msgid "Competition"
+msgstr "Natjecanje"
+
+msgid "Competitions"
+msgstr "Natjecanja"
+
+msgid "Create new competition"
+msgstr "Kreiraj novo natjecanje"
+
+msgid "Title"
+msgstr "Naziv"
