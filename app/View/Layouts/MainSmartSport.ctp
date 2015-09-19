@@ -51,6 +51,8 @@
     <?= $this->Html->script('/Modules/get/Clubs');?>
     <?= $this->Html->script('/Modules/get/Permissions');?>
     <?= $this->Html->script('/Modules/get/Competitions');?>
+    <?= $this->Html->script('/Modules/get/Events');?>
+    <?= $this->Html->script('/Modules/get/Alliances');?>
     
    <script type='text/javascript'>
     
@@ -115,6 +117,8 @@ Ext.onReady(function() {
                 clubsTab,
                 permissionsTab,
                 competitionsTab,
+                eventsTab,
+                alliancesTab,
                 
             {
               glyph: "xf135@FontAwesome",

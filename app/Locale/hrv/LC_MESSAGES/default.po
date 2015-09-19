@@ -132,3 +132,21 @@ msgstr "Kreiraj novo natjecanje"
 
 msgid "Title"
 msgstr "Naziv"
+
+msgid "Alliances"
+msgstr "Savezi"
+
+msgid "Alliance"
+msgstr "Savez"
+
+msgid "Events"
+msgstr "Događaji"
+
+msgid "Event"
+msgstr "Događaj"
+
+msgid "Starts"
+msgstr "Počinje"
+
+msgid "Ends"
+msgstr "Završava"
