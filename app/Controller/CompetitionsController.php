@@ -78,4 +78,17 @@
         
         return json_encode($result);
     }
+    
+    function getCompetitionEvents(){
+        if (empty($this->request->query['competition_id'])){
+            return json_encode(array('success'=>false,'message'=>'Competition id empty'));
+        }
+        
+        $result = $this->Competition->find('first',[
+            'conditions'=>['Competition.id'=>$this->request->query['competition_id']],
+            'contain'=>['Event']
+        ]);
+        
+        return json_encode($result['Event']);
+    }
 }

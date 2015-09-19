@@ -6,4 +6,6 @@
         )
     );
     
+    var $hasMany = array('Event');
+    
 }
