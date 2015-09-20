@@ -12,17 +12,12 @@
         <script src="/ext-themes/theme-triton/theme-triton.js"></script>
         <link rel="stylesheet" href="/ext-themes/theme-triton/resources/theme-triton-all.css"/>
         
-       
-        
         <!-- load fonts -->
         <link rel="stylesheet" href="/css/fonts.css"/>
         
-        <style>
-            html,body {
-                height:100%;
-            }
-            
-        </style>
+        <!-- load custom css overrides -->
+        <link rel="stylesheet" href="/css/styles.css"/>
+        
     </head>
     <body>
         <script>
@@ -57,14 +52,65 @@
    <script type='text/javascript'>
     
 Ext.onReady(function() {
+    
+    Ext.define('Test', {
+        extend: 'Ext.data.Model',
+        fields: [{
+            name: 'text',
+            type: 'string'
+        }],
+        proxy: {
+            type: 'memory',
+            data: {
+                success: true,
+                children: [{
+                   
+                    text: 'Home',
+                     glyph: 'xf1e3@FontAwesome',
+                     iconCls: 'fa-building',
+                    leaf: false, // this is a branch   
+                    expanded: false,
+                    children: [{
+                        text: 'Mercedes-Benz',
+                        leaf: true // this is a leaf node. It can't have children. Sad! :-(   
+                    }, {
+                        text: 'Audi',
+                        leaf: true
+                    }, {
+                        text: 'Ferrari',
+                         glyph: 'xf1e3@FontAwesome',
+                        leaf: true
+                    }]
+                },{
+                    text:'Admin',
+                    expanded:false,
+                    leaf:true,
+                    href:'/admin'
+                },{
+                    text:'Settings',
+                    expanded: false,
+                    children:[
+                        {text:'Miro',leaf:true},
+                        {text:'Pero',leaf:true}
+                    ]
+                }]
+            }
+        }
+    });
+
+    var menuTreeStore = Ext.create('Ext.data.TreeStore', {
+        model: 'Test'
+    });
+  
    
     var mainPanel = new Ext.panel.Panel({
         title: 'Smart Sport',
         glyph: 'xf1e3@FontAwesome',
         width: '100%',
         height: '100%',
-        plugins: 'responsive',
-        layout: 'fit',
+        //height: '500px',
+       // plugins: 'responsive',
+        layout: 'border',
         header: {
             titlePosition: 0,
                 items:[{
@@ -94,53 +140,28 @@ Ext.onReady(function() {
                 }
             ]    
         },
-        items: [
-            Ext.create('Ext.tab.Panel',{
-            height:'100%',
-            //width:'400',
-           
-            tabPosition: 'left',
-            tabRotation: 0,
-            tabBar: {
-               padding: '10',
-               border: false
-            },
-
-            defaults: {
-                textAlign: 'left',
-                bodyPadding: 0,
-              
-            },
-
-            items:[
-                usersTab,
-                clubsTab,
-                permissionsTab,
-                competitionsTab,
-                eventsTab,
-                alliancesTab,
+        items: [{
+            region:'west',
+            autoScroll: true,
+            width: 250,
+             split: true,
+            layout: 'fit',
+            // scrollable: 'y',
+            items: [{
+          
+                xtype: 'treepanel',
+                store: menuTreeStore,
+                rootVisible: false,
+                bufferedRenderer: false,
+                animate: true,
+                cls:'menuTree'
                 
-            {
-              glyph: "xf135@FontAwesome",
-              //  title: '<?= $this->Html->link(__("Test"),['controller'=>'test','action'=>'index']);?>'
-                title: '<?= __("Test");?>'
-            },{
-                title: 'Nekaj kul',
-                glyph: 'xf0c0@FontAwesome',
-                html:'Content',
-              
-            }
-                ]
-                
-        
-    } )
-        ],
-        tools: [
-            { type:'pin' },
-            { type:'refresh' },
-            { type:'search' },
-            { type:'save' }
+            }],
+        },{
+            region:'center'
+        }
         ]
+        
     });
     
    
