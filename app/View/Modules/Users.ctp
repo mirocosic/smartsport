@@ -5,7 +5,8 @@ var usersStore = Ext.create('Ext.data.Store',{
         {name:'User.name',mapping:'User.name'},
         {name:'User.surname',mapping:'User.surname'},
         {name:'User.mail',mapping:'User.mail'},
-        {name:'User.username',mapping:'User.username'}
+        {name:'User.username',mapping:'User.username'},
+        {name:'User.oib',mapping:'User.oib'}
 
     ],
     proxy: {
@@ -30,6 +31,7 @@ var usersTab = new Ext.panel.Panel({
                 {header:'<?=__("Surname");?>',dataIndex:'User.surname'},
                 {header:'<?=__("Mail");?>',dataIndex:'User.mail'},
                 {header:'<?=__("Username");?>',dataIndex:'User.username'},
+                {header:'<?=__("OIB");?>',dataIndex:'User.oib'},
                
                 {
                    
@@ -73,6 +75,14 @@ var usersTab = new Ext.panel.Panel({
                                     },{
                                         name:"User.username",
                                         fieldLabel:"<?=__('Username');?>"
+                                    },{
+                                        name:'User.password',
+                                        fieldLabel:"<?=__('Password');?>",
+                                        allowBlank: true
+                                    },{
+                                        name:"User.oib",
+                                        fieldLabel:"<?=__('OIB');?>",
+                                        allowBlank: true
                                     }],
                                     buttons:[{
                                         formBind: true,
@@ -159,6 +169,14 @@ var usersTab = new Ext.panel.Panel({
                         },{
                             name:"User.username",
                             fieldLabel:"<?=__('Username');?>"
+                        },{
+                            name:'User.password',
+                            fieldLabel:"<?=_('Password');?>"
+                            
+                        },{
+                            name:"User.oib",
+                            fieldLabel:"<?=__('OIB');?>",
+                            allowBlank: true
                         }],
                         buttons:[{
                             formBind: true,

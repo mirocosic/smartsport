@@ -71,7 +71,14 @@
         $saveData['User']['surname'] = trim($this->request->data['User_surname']);
         $saveData['User']['mail'] = trim($this->request->data['User_mail']);
         $saveData['User']['username'] = trim($this->request->data['User_username']);
+        $saveData['User']['oib'] = trim($this->request->data['User_oib']);
         
+        if (!empty($this->request->data['User_password'])){
+            App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
+            $passwordHasher = new BlowfishPasswordHasher();
+        
+           $saveData['User']['password'] = $passwordHasher->hash($this->request->data['User_password']);
+        }
         
         
         if ($this->User->saveAll($saveData)){
@@ -82,13 +89,7 @@
             $response['message'] = __('Error while saving. Please contact your Administrator.');
 
         }
-     /*   
-        App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
-        $passwordHasher = new BlowfishPasswordHasher();
-            
-        $this->request->data['User']['password'] = $passwordHasher->hash($this->request->data['User']['password']);
-        
-      */
+    
         return json_encode($response);
     }
     
@@ -97,7 +98,7 @@
         $this->autoRender = false;
         
         $users = $this->User->find('all',[
-            'fields'=>['User.id','User.username','User.name','User.surname','User.mail']
+            'fields'=>['User.id','User.username','User.name','User.surname','User.mail','User.oib']
         ]);
        
         return json_encode($users);
